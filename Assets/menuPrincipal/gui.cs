@@ -9,13 +9,16 @@ public class gui : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		if (GUILayout.Button("Press Me"))
-			Debug.Log("Hello!");
-		/*GUILayout.TextArea (new Rect(10,10,200,200), "Recuerdo esos tiempos donde todo era mas simple adorabamos a aquellos dioses " +
-			"cuando las nuevas generaciones empezaron a dudar de su divinidad, ahi es donde todo empezo a ser mas complicado" +
-			"ahora los dioses, estan furiosos y empiezaron a mandar mountruos, muestras de su fuiria por si furia" +
-			"se rumora que existen personas que intentar combatirlas, espero que alguien detenga a aquellos dioses. la la la" +
-			"no sabia que escribir :P");*/
+		GUI.Box(new Rect(10,10,100,90), "Loader Menu");
+		if(GUI.Button(new Rect(20,40,80,20), "Level 1")) {
+
+			Application.LoadLevel("Pantallajuego");
+		}
+		
+		// Make the second button.
+		if(GUI.Button(new Rect(20,70,80,20), "Level 2")) {
+			Application.LoadLevel(2);
+		}
 	}
 	// Update is called once per frame
 	void Update () {
