@@ -16,6 +16,8 @@ public class desplegarconstruir : MonoBehaviour {
 	private int radioy=18;
 	private int radioopcionx=20;
 	private int radioopciony=14;
+	private bool creando;
+	private Vector3 posiantimouse;
 
 	public void ocultar_opciones()
 	{
@@ -85,6 +87,7 @@ public class desplegarconstruir : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		creando = false;
 		esferaprincipal = GameObject.Find("construir");
 		opcion1 = GameObject.Find("construiropcion1");
 		opcion2 = GameObject.Find("construiropcion2");
@@ -100,35 +103,65 @@ public class desplegarconstruir : MonoBehaviour {
 	void Update () {
 		if(Input.GetMouseButtonUp(0))
 		{
-			if(selecciono_anteriormente == true)
+			if(creando == true)
 			{
-				//Debug.Log ("*************************");
-				int resu = selecciono_alguna_opcion();
-				if(resu != 0)
-				{
-					selecciono_anteriormente = false;
-					//Con el int de la opcion seleccionada, determinar la estructura a hacer
-					Debug.Log ("Entro a "+resu);
-					ocultar_opciones();
-				}
-				else
-				{
-					selecciono_anteriormente = false;
-					ocultar_opciones();
-				}
+				creando = false;
+				Vector3 pos = Input.mousePosition;
+				pos.z = 20;
+				pos = Camera.main.ScreenToWorldPoint(pos);
+				Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
+				Destroy(GameObject.Find("Cubogeneradosombra(Clone)"), 0.0F);
 			}
 			else
 			{
-				Vector3 mouse = Input.mousePosition;
-				//Debug.Log ("----------------------");
 
-				if(click_dentro_esfera_principal() && selecciono_anteriormente != true)
+				if(selecciono_anteriormente == true)
 				{
-					selecciono_anteriormente = true;
-					//Debug.Log("ENTRO!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					mostrar_opciones();
+					//Debug.Log ("*************************");
+					int resu = selecciono_alguna_opcion();
+					if(resu != 0)
+					{
+						selecciono_anteriormente = false;
+						Vector3 pos = Input.mousePosition;
+						pos.z = 20;
+						pos = Camera.main.ScreenToWorldPoint(pos);
+						Instantiate(GameObject.Find("Cubogeneradosombra"), pos,  Quaternion.identity);
+						creando = true;
+						posiantimouse = pos;
+						Debug.Log ("Entro a "+resu);
+						ocultar_opciones();
+					}
+					else
+					{
+						selecciono_anteriormente = false;
+						ocultar_opciones();
+					}
+				}
+				else
+				{
+					Vector3 mouse = Input.mousePosition;
+					//Debug.Log ("----------------------");
+
+					if(click_dentro_esfera_principal() && selecciono_anteriormente != true)
+					{
+						selecciono_anteriormente = true;
+						//Debug.Log("ENTRO!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+						mostrar_opciones();
+					}
 				}
 			}
+		}
+		else
+		{
+			if(creando == true)
+			{
+				Vector3 pos = Input.mousePosition;
+				pos.z = 20;
+				pos = Camera.main.ScreenToWorldPoint(pos);
+				GameObject.Find("Cubogeneradosombra(Clone)").transform.Translate(pos-posiantimouse);
+				posiantimouse = pos;
+			}
+			
 		}
 		
 	
