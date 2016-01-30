@@ -17,7 +17,7 @@ public class gui : MonoBehaviour {
 		
 		// Make the second button.
 		if(GUI.Button(new Rect(20,70,80,20), "Salir")) {
-			Application.LoadLevel(2);
+			Application.Quit();
 		}
 	}
 	// Update is called once per frame
