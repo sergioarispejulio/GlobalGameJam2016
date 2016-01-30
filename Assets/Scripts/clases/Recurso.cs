@@ -16,12 +16,12 @@ public class Recurso : MonoBehaviour {
 	
 	}
 
-	public void reducir_disponibilidad()
+	protected void reducir_disponibilidad()
 	{
 		cantidad_disponible--;
 	}
 
-	public bool	verificar_si_esta_disponible()
+	protected bool	verificar_si_esta_disponible()
 	{
 		if (cantidad_disponible == 0)
 			return false;
