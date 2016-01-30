@@ -12,8 +12,8 @@ public class camera : MonoBehaviour {
 	
 	private Vector3 mouseOrigin;	// Position of cursor when mouse dragging starts
 	private float speed = 15.0f;
-	private float tamanoxpantalla = (Screen.width*0.40f);
-	private float tamanoypantalla = (Screen.height*0.40f);
+	private float tamanoxpantalla = (Screen.width*0.45f);
+	private float tamanoypantalla = (Screen.height*0.45f);
 	Vector3 medio = new Vector3((Screen.width/2), (Screen.height/2) ,0);
 	private float limitex = 50;
 	private float limitey = 50;
