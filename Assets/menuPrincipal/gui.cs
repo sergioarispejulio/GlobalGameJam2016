@@ -9,14 +9,15 @@ public class gui : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.Box(new Rect(10,10,100,90), "Loader Menu");
-		if(GUI.Button(new Rect(20,40,80,20), "Nueva Partida")) {
+		GUI.Box(new Rect(10,10,120,120), "Loader Menu");
+		if(GUI.Button(new Rect(20,40,100,20), "Nueva Partida")) {
 
 			Application.LoadLevel("Pantallajuego");
 		}
 		
 		// Make the second button.
-		if(GUI.Button(new Rect(20,70,80,20), "Salir")) {
+		if(GUI.Button(new Rect(20,70,100,20), "Salir")) {
+
 			Application.Quit();
 		}
 	}
