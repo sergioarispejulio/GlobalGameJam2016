@@ -114,13 +114,13 @@ public class desplegarconstruir : MonoBehaviour {
 				pos.z = 20;
 				pos = Camera.main.ScreenToWorldPoint(pos);
 				if (indexOpcion == 1) {
-					Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
+					Instantiate(GameObject.Find("arbol"), pos,  Quaternion.identity);
 				}
 				if (indexOpcion == 2) {
 					Instantiate(GameObject.Find("roca"), pos,  Quaternion.identity);
 				}
 				if (indexOpcion == 3) {
-					Instantiate(GameObject.Find("arbol"), pos,  Quaternion.identity);
+					Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
 				}
 				//Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
 				Destroy(GameObject.Find("Cubogeneradosombra(Clone)"), 0.0F);
