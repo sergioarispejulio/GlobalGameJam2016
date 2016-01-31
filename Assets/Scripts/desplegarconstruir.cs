@@ -17,6 +17,7 @@ public class desplegarconstruir : MonoBehaviour {
 	private int radioopcionx=20;
 	private int radioopciony=14;
 	private bool creando;
+	private int indexOpcion;
 	private Vector3 posiantimouse;
 
 	public void ocultar_opciones()
@@ -101,15 +102,27 @@ public class desplegarconstruir : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		int resu;
 		if(Input.GetMouseButtonUp(0))
 		{
+			resu = selecciono_alguna_opcion();
 			if(creando == true)
 			{
+
 				creando = false;
 				Vector3 pos = Input.mousePosition;
 				pos.z = 20;
 				pos = Camera.main.ScreenToWorldPoint(pos);
-				Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
+				if (indexOpcion == 1) {
+					Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
+				}
+				if (indexOpcion == 2) {
+					Instantiate(GameObject.Find("roca"), pos,  Quaternion.identity);
+				}
+				if (indexOpcion == 3) {
+					Instantiate(GameObject.Find("arbol"), pos,  Quaternion.identity);
+				}
+				//Instantiate(GameObject.Find("Cubogenerado"), pos,  Quaternion.identity);
 				Destroy(GameObject.Find("Cubogeneradosombra(Clone)"), 0.0F);
 			}
 			else
@@ -118,7 +131,7 @@ public class desplegarconstruir : MonoBehaviour {
 				if(selecciono_anteriormente == true)
 				{
 					//Debug.Log ("*************************");
-					int resu = selecciono_alguna_opcion();
+					resu = selecciono_alguna_opcion();
 					if(resu != 0)
 					{
 						selecciono_anteriormente = false;
@@ -129,6 +142,7 @@ public class desplegarconstruir : MonoBehaviour {
 						creando = true;
 						posiantimouse = pos;
 						Debug.Log ("Entro a "+resu);
+						indexOpcion = resu;
 						ocultar_opciones();
 					}
 					else

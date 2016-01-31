@@ -7,9 +7,17 @@ public class Construccion : Objeto {
 	void Start () {
 	
 	}
-	
+	void OnMouseOver()
+	{
+		Debug.Log ("esta sobre el objeto");
+	}
+
+	void OnMouseClick()
+	{
+		Debug.Log ("Click");
+	}
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }
